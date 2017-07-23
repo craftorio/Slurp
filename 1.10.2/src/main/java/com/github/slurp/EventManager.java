@@ -52,24 +52,10 @@ public class EventManager {
 			return;
 
 		}
-		BlockPos blockpos = result.getBlockPos();
-		IBlockState iblockstate = event.getWorld().getBlockState(blockpos);
-		Material material = iblockstate.getMaterial();
-		if (event.getEntityLiving() instanceof EntityPlayer) {
-
-			ThirstHandler thirstHandler = (ThirstHandler) ThirstHelper.getThirstData(player);
-
-			if (thirstHandler.isThirsty()) {
-
-				if (material == Material.WATER && ((Integer) iblockstate.getValue(BlockLiquid.LEVEL)).intValue() == 0) {
-
-					thirstHandler.addStats(10, 6.7F);
-					player.addPotionEffect(new PotionEffect(TANPotions.thirst, 600));
-					player.playSound(SoundEvents.BLOCK_WATER_AMBIENT, 10, 10);
-				}
+		
 			}
 
-		}
+		
 
-	}
+	
 }

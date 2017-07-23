@@ -19,9 +19,9 @@ public void init(FMLInitializationEvent event) {
 	}
 private void register(FMLPreInitializationEvent preEvent) {
 
-if (Loader.isModLoaded("ToughAsNails")) {
+
 MinecraftForge.EVENT_BUS.register(new EventManager());
-		}
+		
 }
 public void registerRenders(FMLInitializationEvent event) {
 	}
