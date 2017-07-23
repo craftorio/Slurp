@@ -1,18 +1,18 @@
 [
   {
-    "modid": "examplemod",
-    "name": "Example Mod",
-    "description": "Example placeholder mod.",
+    "modid": "slurp",
+    "name": "Slurp",
+    "description": "Addon to Tough As Nails, allows you to right click water to get thirst!",
     "version": "${version}",
     "mcversion": "${mcversion}",
     "url": "",
     "updateUrl": "",
     "authorList": [
-      "ExampleDude"
+      "EPIIC_THUNDERCAT","Cjm721"
     ],
-    "credits": "The Forge and FML guys, for making this example",
-    "logoFile": "",
+    "credits": "Thank you to CJ for help and teaching me some new things about packets! as well as Sekwah <3",
+    "logoFile": "logo.png",
     "screenshots": [],
-    "dependencies": []
+    "dependencies": [ToughAsNails]
   }
 ]
