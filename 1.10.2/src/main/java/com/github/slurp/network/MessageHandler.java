@@ -7,7 +7,13 @@ import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
-
+/**
+ * 
+ * @author CJm721 Code for Overloaded Multitool
+ * None of this code belongs to me!
+ * https://minecraft.curseforge.com/projects/overloaded?gameCategorySlug=mc-mods&projectID=264601
+ *
+ */
 public class MessageHandler implements IMessageHandler<RightClickMessage, IMessage> {
 
     /**
@@ -25,7 +31,7 @@ public class MessageHandler implements IMessageHandler<RightClickMessage, IMessa
     public IMessage onMessage(RightClickMessage message, MessageContext ctx) {
         EntityPlayerMP player = ctx.getServerHandler().playerEntity;
         WorldServer world = player.getServerWorld();
-        return message;
+        return null;
 
     }
 }

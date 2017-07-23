@@ -4,7 +4,13 @@ import io.netty.buffer.ByteBuf;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
-
+/**
+ * 
+ * @author CJm721 Code for Overloaded Multitool
+ * None of this code belongs to me!
+ * https://minecraft.curseforge.com/projects/overloaded?gameCategorySlug=mc-mods&projectID=264601
+ *
+ */
 public class RightClickMessage implements IMessage {
 
 	private EnumFacing hitSide;

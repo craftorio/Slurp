@@ -29,7 +29,7 @@ public class Slurp {
 	@EventHandler
 	private void preInit(FMLPreInitializationEvent preEvent) {
 		network = NetworkRegistry.INSTANCE.newSimpleChannel("Slurp");
-		network.registerMessage(MessageHandler.class, RightClickMessage.class, 0, Side.CLIENT);
+		network.registerMessage(MessageHandler.class, RightClickMessage.class, 0, Side.SERVER);
 		proxy.preInit(preEvent);
 		}
 
