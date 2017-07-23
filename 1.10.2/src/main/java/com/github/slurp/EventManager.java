@@ -37,7 +37,7 @@ public class EventManager {
 		} // Not interfering like this.
 		EntityPlayer player = (EntityPlayer) event.getEntityLiving();
 		RayTraceResult result = event.getWorld().rayTraceBlocks(player.getPositionEyes(1),
-				player.getPositionVector().add(player.getLookVec()));
+				player.getPositionVector().add(player.getLookVec()), true);
 		if (event.getWorld().isRemote) {
 			// Not doing this on client side. (Seems to be fired on server side
 			// only by default already.)
@@ -53,7 +53,6 @@ public class EventManager {
 
 		}
 		BlockPos blockpos = result.getBlockPos();
-
 		IBlockState iblockstate = event.getWorld().getBlockState(blockpos);
 		Material material = iblockstate.getMaterial();
 		if (event.getEntityLiving() instanceof EntityPlayer) {
