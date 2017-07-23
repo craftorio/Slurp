@@ -1,10 +1,14 @@
 package com.github.slurp.network;
 
+import javax.annotation.Nullable;
+
+import com.github.slurp.Globals;
+
 import net.minecraft.block.BlockLiquid;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.math.BlockPos;
@@ -15,10 +19,6 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import toughasnails.api.TANPotions;
 import toughasnails.api.thirst.ThirstHelper;
 import toughasnails.thirst.ThirstHandler;
-
-import javax.annotation.Nullable;
-
-import com.github.slurp.Globals;
 
 /**
  * @author CJm721 Code for Overloaded Multitool
@@ -38,16 +38,21 @@ public class MessageHandler implements IMessageHandler<RightClickMessage, IMessa
     @Override
     @Nullable
     public IMessage onMessage(RightClickMessage message, MessageContext ctx) {
-        BlockPos blockpos = message.getPos();
-        EntityPlayerMP player = ctx.getServerHandler().player;
-        IBlockState iblockstate = player.getServerWorld().getBlockState(blockpos);
-        Material material = iblockstate.getMaterial();
-        ThirstHandler thirstHandler = (ThirstHandler) ThirstHelper.getThirstData(player);
-
+    	EntityPlayerMP player = ctx.getServerHandler().player;
+		BlockPos blockpos = message.getPos();
+		WorldServer world = player.getServerWorld();
+		
+		IBlockState iblockstate = player.getServerWorld().getBlockState(blockpos);
+		Material material = iblockstate.getMaterial();
+		ThirstHandler thirstHandler = (ThirstHandler) ThirstHelper.getThirstData(player);
         if (thirstHandler.isThirsty()) {
 
             if (material == Material.WATER && (iblockstate.getValue(BlockLiquid.LEVEL)).intValue() == 0) {
-
+            	if (Globals.SHOULD_TAKE_BLOCK == true) {
+					world.setBlockState(blockpos, Blocks.AIR.getDefaultState(), 11);
+					
+				}
+				
                 thirstHandler.addStats(Globals.DRINK_AMOUNT, Globals.DRINK_HYDRATIONS);
                 player.addPotionEffect(new PotionEffect(TANPotions.thirst, Globals.THIRST_EFFECT_DURATION, Globals.THIRST_EFFECT_POTENCY));
                 player.playSound(SoundEvents.ENTITY_GENERIC_DRINK, 10, 1);

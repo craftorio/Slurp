@@ -21,7 +21,7 @@ public class RightClickMessage implements IMessage {
     public RightClickMessage() {
     }
 
-    public RightClickMessage(BlockPos pos, EnumFacing hitSide, float hitX, float hitY, float hitZ) {
+    public RightClickMessage(BlockPos pos, EnumFacing hitSide,float hitX, float hitY, float hitZ) {
         this.pos = pos;
         this.hitSide = hitSide;
         this.hitX = hitX;

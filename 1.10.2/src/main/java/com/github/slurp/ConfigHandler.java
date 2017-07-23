@@ -28,7 +28,7 @@ public class ConfigHandler {
 	        Globals.DRINK_HYDRATIONS = CONFIG.getFloat("DrinkHydrations", DEF_CAT, 0.2f, 0.0f, 20f, "Increase or decrease amount of hydration each drink give");
 	        Globals.THIRST_EFFECT_DURATION = CONFIG.getInt("ThirstEffectDuration", DEF_CAT, 600, 0, 6400, "Increase or decrease amount of time the Thirst effect lasts");
 	        Globals.THIRST_EFFECT_POTENCY = CONFIG.getInt("ThirstEffectPotency", DEF_CAT, 5, 1, 10, "Increase or decrease potency of the Thirst effect");
-		       
+		    Globals.SHOULD_TAKE_BLOCK = CONFIG.getBoolean("ShouldTakeSourceBlock", DEF_CAT, false, "If set to true the water block will be taken");
 	        if (CONFIG.hasChanged()) {
 	            CONFIG.save();
 	        }

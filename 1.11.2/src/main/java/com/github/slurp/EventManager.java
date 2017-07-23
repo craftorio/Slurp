@@ -25,17 +25,17 @@ public class EventManager {
             return;
         } // Only for the main hand
 
-        if (event.getEntityPlayer().isSneaking()) {
-            return;
-        } // Not interfering like this.
-        EntityPlayer player = (EntityPlayer) event.getEntityLiving();
-        RayTraceResult result = event.getWorld().rayTraceBlocks(player.getPositionEyes(1),
-                player.getPositionVector().add(player.getLookVec()), true);
-        if (event.getWorld().isRemote) {
-            // Not doing this on client side. (Seems to be fired on server side
-            // only by default already.)
-            if (result != null && result.typeOfHit == RayTraceResult.Type.BLOCK) {
-
+		if (event.getEntityPlayer().isSneaking()) {
+			return;
+		} // Not interfering like this.
+		EntityPlayer player = (EntityPlayer) event.getEntityLiving();
+		RayTraceResult result = event.getWorld().rayTraceBlocks(player.getPositionEyes(1),
+				player.getPositionEyes(0).addVector(player.getLook(1).xCoord * 4, player.getLook(1).yCoord  * 4, player.getLook(1).zCoord * 4 ), true);
+		
+		if (event.getWorld().isRemote) {
+			// Not doing this on client side. (Seems to be fired on server side
+			// only by default already.)
+			if (result != null && result.typeOfHit == RayTraceResult.Type.BLOCK) {
                 Slurp.network.sendToServer(new RightClickMessage(result.getBlockPos(), result.sideHit,
                         (float) result.hitVec.xCoord - result.getBlockPos().getX(),
                         (float) result.hitVec.yCoord - result.getBlockPos().getY(),
