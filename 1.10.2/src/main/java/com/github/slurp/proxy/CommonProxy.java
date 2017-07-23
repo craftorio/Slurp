@@ -2,7 +2,6 @@ package com.github.slurp.proxy;
 
 import com.github.slurp.EventManager;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
@@ -18,9 +17,7 @@ public class CommonProxy {
     }
 
     private void register(FMLPreInitializationEvent preEvent) {
-        if (Loader.isModLoaded("ToughAsNails")) {
-            MinecraftForge.EVENT_BUS.register(new EventManager());
-        }
+        MinecraftForge.EVENT_BUS.register(new EventManager());
     }
 
     public void registerRenders(FMLInitializationEvent event) {
