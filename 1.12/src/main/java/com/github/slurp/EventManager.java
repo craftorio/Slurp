@@ -37,9 +37,9 @@ public class EventManager {
             if (result != null && result.typeOfHit == RayTraceResult.Type.BLOCK) {
 
                 Slurp.network.sendToServer(new RightClickMessage(result.getBlockPos(), result.sideHit,
-                        (float) result.hitVec.xCoord - result.getBlockPos().getX(),
-                        (float) result.hitVec.yCoord - result.getBlockPos().getY(),
-                        (float) result.hitVec.zCoord - result.getBlockPos().getZ()));
+                        (float) result.hitVec.x - result.getBlockPos().getX(),
+                        (float) result.hitVec.y - result.getBlockPos().getY(),
+                        (float) result.hitVec.z - result.getBlockPos().getZ()));
 
             }
         }

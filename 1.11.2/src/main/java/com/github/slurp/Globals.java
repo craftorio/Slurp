@@ -4,7 +4,7 @@ public class Globals {
     public static final String ID = "slurp";
     public static final String VER = "0.0.1";
     public static final String NAME = "Slurp";
-    public static final String DEPENDENCIES = "required-after:ToughAsNails";
+    public static final String DEPENDENCIES = "required-after:toughasnails";
 
 
     public static final String CLIENT_PROXY = "com.github.slurp.proxy.ClientProxy";

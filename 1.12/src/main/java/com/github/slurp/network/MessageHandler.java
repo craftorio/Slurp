@@ -39,7 +39,7 @@ public class MessageHandler implements IMessageHandler<RightClickMessage, IMessa
     @Nullable
     public IMessage onMessage(RightClickMessage message, MessageContext ctx) {
         BlockPos blockpos = message.getPos();
-        EntityPlayerMP player = ctx.getServerHandler().playerEntity;
+        EntityPlayerMP player = ctx.getServerHandler().player;
         IBlockState iblockstate = player.getServerWorld().getBlockState(blockpos);
         Material material = iblockstate.getMaterial();
         ThirstHandler thirstHandler = (ThirstHandler) ThirstHelper.getThirstData(player);
