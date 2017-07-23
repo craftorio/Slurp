@@ -1,6 +1,8 @@
 package com.github.slurp.proxy;
 
+import com.github.slurp.ConfigHandler;
 import com.github.slurp.EventManager;
+
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -9,6 +11,8 @@ public class CommonProxy {
 
     public void preInit(FMLPreInitializationEvent preEvent) {
         register(preEvent);
+
+        ConfigHandler.init();
     }
 
     public void init(FMLInitializationEvent event) {

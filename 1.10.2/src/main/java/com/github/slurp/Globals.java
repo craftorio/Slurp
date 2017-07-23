@@ -9,4 +9,17 @@ public class Globals {
 
     public static final String CLIENT_PROXY = "com.github.slurp.proxy.ClientProxy";
     public static final String SERVER_PROXY = "com.github.slurp.proxy.CommonProxy";
+    
+    
+    
+    
+    public static final String CONFIG_FILE = "config/slurp.cfg";
+    public static int DRINK_AMOUNT = 1;
+    public static float DRINK_HYDRATIONS = 0.2f;
+    public static int THIRST_EFFECT_DURATION = 600;
+    public static int THIRST_EFFECT_POTENCY = 5;
+    
+    
+    
+    
 }

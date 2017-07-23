@@ -18,6 +18,8 @@ import toughasnails.thirst.ThirstHandler;
 
 import javax.annotation.Nullable;
 
+import com.github.slurp.Globals;
+
 /**
  * @author CJm721 Code for Overloaded Multitool
  *         None of this code belongs to me!
@@ -46,9 +48,9 @@ public class MessageHandler implements IMessageHandler<RightClickMessage, IMessa
 
             if (material == Material.WATER && (iblockstate.getValue(BlockLiquid.LEVEL)).intValue() == 0) {
 
-                thirstHandler.addStats(10, 6.7F);
-                player.addPotionEffect(new PotionEffect(TANPotions.thirst, 600));
-                player.playSound(SoundEvents.BLOCK_WATER_AMBIENT, 10, 10);
+                thirstHandler.addStats(Globals.DRINK_AMOUNT, Globals.DRINK_HYDRATIONS);
+                player.addPotionEffect(new PotionEffect(TANPotions.thirst, Globals.THIRST_EFFECT_DURATION, Globals.THIRST_EFFECT_POTENCY));
+                player.playSound(SoundEvents.ENTITY_GENERIC_DRINK, 10, 1);
             }
         }
         return null;
