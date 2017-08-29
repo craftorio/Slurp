@@ -2,7 +2,7 @@ package com.github.slurp;
 
 public class Globals {
     public static final String ID = "slurp";
-    public static final String VER = "0.2";
+    public static final String VER = "0.3";
     public static final String NAME = "Slurp";
     public static final String DEPENDENCIES = "required-after:ToughAsNails";
 

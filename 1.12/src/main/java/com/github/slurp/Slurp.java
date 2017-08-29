@@ -13,7 +13,9 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
 
-@Mod(modid = Globals.ID, name = Globals.NAME, version = Globals.VER, dependencies = Globals.DEPENDENCIES)
+@Mod(modid = Globals.ID, name = Globals.NAME, version = Globals.VER, dependencies = Globals.DEPENDENCIES,
+acceptedMinecraftVersions = "[1.12,1.13)",
+useMetadata = true)
 public class Slurp {
 
 

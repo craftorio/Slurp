@@ -55,7 +55,7 @@ public class MessageHandler implements IMessageHandler<RightClickMessage, IMessa
 				
                 thirstHandler.addStats(Globals.DRINK_AMOUNT, Globals.DRINK_HYDRATIONS);
                 player.addPotionEffect(new PotionEffect(TANPotions.thirst, Globals.THIRST_EFFECT_DURATION, Globals.THIRST_EFFECT_POTENCY));
-                player.playSound(SoundEvents.ENTITY_GENERIC_DRINK, 10, 1);
+               
             }
         }
         return null;
