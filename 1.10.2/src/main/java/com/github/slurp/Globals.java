@@ -16,10 +16,7 @@ public class Globals {
     public static final String CONFIG_FILE = "config/slurp.cfg";
     public static int DRINK_AMOUNT = 1;
     public static float DRINK_HYDRATIONS = 0.2f;
-    public static int THIRST_EFFECT_DURATION = 600;
-    public static int THIRST_EFFECT_POTENCY = 5;
+    public static int THIRST_EFFECT_DURATION = 200;
+    public static int THIRST_EFFECT_POTENCY = 1;
     public static boolean SHOULD_TAKE_BLOCK = true;
-    
-    
-    
 }

@@ -6,8 +6,12 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.MobEffects;
+import net.minecraft.init.PotionTypes;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.potion.PotionType;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
@@ -16,6 +20,7 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import toughasnails.api.TANPotions;
 import toughasnails.api.thirst.ThirstHelper;
 import toughasnails.thirst.ThirstHandler;
+import net.minecraftforge.fml.common.FMLLog;
 
 import javax.annotation.Nullable;
 
@@ -49,16 +54,19 @@ public class MessageHandler implements IMessageHandler<RightClickMessage, IMessa
 		ThirstHandler thirstHandler = (ThirstHandler) ThirstHelper.getThirstData(player);
 
 		if (thirstHandler.isThirsty()) {
-
-			if (material == Material.WATER && (iblockstate.getValue(BlockLiquid.LEVEL)).intValue() == 0) {
-				if (Globals.SHOULD_TAKE_BLOCK == true) {
-					world.setBlockState(blockpos, Blocks.AIR.getDefaultState(), 11);
-					
+			if (material == Material.WATER) {
+				if (iblockstate.getValue(BlockLiquid.LEVEL).intValue() == 0){
+					if (Globals.SHOULD_TAKE_BLOCK == true) {
+						world.setBlockState(blockpos, Blocks.AIR.getDefaultState(), 11);
+					}
+					thirstHandler.addStats(Globals.DRINK_AMOUNT, Globals.DRINK_HYDRATIONS);
+					if (Math.random() * 100 <= 7) {
+						player.addPotionEffect(new PotionEffect(MobEffects.POISON, Globals.THIRST_EFFECT_DURATION,
+								Globals.THIRST_EFFECT_POTENCY));
+						player.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, Globals.THIRST_EFFECT_DURATION,
+								Globals.THIRST_EFFECT_POTENCY));
+					}
 				}
-				thirstHandler.addStats(Globals.DRINK_AMOUNT, Globals.DRINK_HYDRATIONS);
-				player.addPotionEffect(new PotionEffect(TANPotions.thirst, Globals.THIRST_EFFECT_DURATION,
-						Globals.THIRST_EFFECT_POTENCY));
-				player.playSound(SoundEvents.ENTITY_GENERIC_DRINK, 1, 1);
 			}
 		}
 		return null;
