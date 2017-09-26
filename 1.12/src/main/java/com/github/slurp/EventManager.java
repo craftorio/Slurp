@@ -2,6 +2,7 @@ package com.github.slurp;
 
 import com.github.slurp.network.RightClickMessage;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickEmpty;
@@ -36,7 +37,7 @@ public class EventManager {
 			// Not doing this on client side. (Seems to be fired on server side
 			// only by default already.)
 			if (result != null && result.typeOfHit == RayTraceResult.Type.BLOCK) {
-
+				player.playSound(SoundEvents.ENTITY_GENERIC_DRINK, 10, 1);
                 Slurp.network.sendToServer(new RightClickMessage(result.getBlockPos(), result.sideHit,
                         (float) result.hitVec.x - result.getBlockPos().getX(),
                         (float) result.hitVec.y - result.getBlockPos().getY(),
